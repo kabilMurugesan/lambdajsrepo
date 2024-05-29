@@ -1,0 +1,31 @@
+{
+  "name": "fido-security-lambda-cdk",
+  "version": "0.1.0",
+  "bin": {
+    "fido-security-lambda-cdk": "bin/FidoSecurityLambdaCdk.ts"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.119",
+    "@types/git-branch": "^2.0.2",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^20.6.0",
+    "jest": "^29.6.4",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.91.0",
+    "aws-lambda": "^1.0.7",
+    "constructs": "^10.0.0",
+    "esbuild": "^0.14.36",
+    "reflect-metadata": "^0.1.13",
+    "source-map-support": "^0.5.16"
+  }
+}

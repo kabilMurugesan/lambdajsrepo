@@ -1,0 +1,228 @@
+@baseUrl = https://tazxhs7axk.execute-api.us-east-2.amazonaws.com
+@env = dev
+
+@cognitoToken = eyJraWQiOiJ6U1JZXC9na3ljN081Q1pCaytqV2toZjMrNVlPczhUSjFFSktkbVwvYWFUakU9IiwiYWxnIjoiUlMyNTYifQ.eyJhdF9oYXNoIjoiUG8ybGZheVZNdFNaMnVfOWN2S3FCUSIsInN1YiI6ImY5NmUwYTBlLTA4MDktNDgwYy05YmNhLTk4M2VkZmU3Mjg3NCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0yLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMl83d096d0JFN3YiLCJjb2duaXRvOnVzZXJuYW1lIjoiZjk2ZTBhMGUtMDgwOS00ODBjLTliY2EtOTgzZWRmZTcyODc0IiwiYXVkIjoiMWtqYjZ0aGJlZjVncGhob21kN3Y3YmxpdmciLCJldmVudF9pZCI6IjM0ZTFkNWM0LTAwMmUtNDIzNi1iNjlkLWQ3YjFhMTVmODczMyIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNzAxNjg4MDg2LCJleHAiOjE3MDE2ODk4ODYsImlhdCI6MTcwMTY4ODA4NiwianRpIjoiYzFlZDgzODAtYzU4Yi00MWRkLTkzYWQtYWUzZTZkYWRlZWYzIiwiZW1haWwiOiJrYXJ0aGlrLnN1bmRhcmFtQGNvbmNlcnRpZGMuY29tIn0.lGfop7akA8dn0kv_ID2_zVFC-Ppw-KgwMI8TpZUT1Qf8m1UPTQXDrGFWWkn1FpidA46g7olYBaeYlAVIWJWQ3ZYjDdw63cofwJcZN53sW-o6Uc_TcIRHt2aEl11pqMDpf8FBxDyLbbuNIFTSJh3L6LTJHWLHOQz2QFRuXGcerab_AS45YVUA0t9xCtVfliGIE88Aigt-y6IEp1JN5d5g893emq5YW1g4h-3xC5CnKqwfTA7nr8UviKjLmVv6VKG0ABvgQE8V4ls2Fz3-wC5Hm06MfR6NKJREcKWsnjxL33X1HE6ljQBlralDy0pE4x3s3tf8d3WG4aQyTcOWRhW5hA
+
+### FIDO SECURITY PAYMENT ACCOUNT CARD
+# @name fidoSecurityPaymentAccountsCard
+POST {{baseUrl}}/{{env}}/payment-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "accountType": "card",
+    "name": "Karthik Sundaram",
+    "accountLast4Digits": "4242",
+    "isPrimary": 1,
+    "stripeToken": "tok_1OJ8ksEyHdeo15o5dsOFfLKd"
+}
+
+### FIDO SECURITY PAYMENT ACCOUNT BANK
+# @name fidoSecurityPaymentAccountsBank
+POST {{baseUrl}}/{{env}}/payment-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "accountType": "bank_account",
+    "name": "Karthik Sundaram",
+    "accountLast4Digits": "6789",
+    "routingNumber": "110000000",
+    "isPrimary": 1,
+    "stripeToken": "btok_1OJ8ZxEyHdeo15o5KLz1hU1K"
+}
+
+### FIDO SECURITY PAYMENT ACCOUNT BANK VERIFICATION
+# @name fidoSecurityPaymentAccountsBankVerification
+PUT {{baseUrl}}/{{env}}/payment-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "objectId": "ba_1OJ8ZxEyHdeo15o5ZJ0BeH7F",
+    "amounts": ["32", "45"]
+}
+
+### FIDO SECURITY PAYMENT ACCOUNT UPDATE DEFAULT SOURCE
+# @name fidoSecurityPaymentAccountsUpdateDefaultSource
+PATCH {{baseUrl}}/{{env}}/payment-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "stripeAccountId": "ba_1OJ8ZxEyHdeo15o5ZJ0BeH7F"
+}
+
+### FIDO SECURITY PAYMENT ACCOUNT GET ACCOUNT DETAILS
+# @name fidoSecurityPaymentAccountsGetAccountDetail
+GET {{baseUrl}}/{{env}}/payment-accounts?stripeAccountId=card_1OJ8ksEyHdeo15o5KUt0cOnc HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+### FIDO SECURITY PAYMENT ACCOUNT GET ALL ACCOUNT DETAILS
+# @name fidoSecurityPaymentAccountsGetAllAccountDetail
+GET {{baseUrl}}/{{env}}/payment-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+### FIDO SECURITY PAYMENT ACCOUNT DELETE ACCOUNT
+# @name fidoSecurityPaymentAccountsDelete
+DELETE {{baseUrl}}/{{env}}/payment-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "stripeAccountId": "card_1OJ8ksEyHdeo15o5KUt0cOnc"
+}
+
+### FIDO SECURITY PAYMENT CONNECTED ACCOUNT
+# @name fidoSecurityPaymentConnectedAccount
+POST {{baseUrl}}/{{env}}/connected-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "businessType":"individual",
+    "firstName":"Karthik",
+    "lastName":"Sundaram",
+    "dobDay":"01",
+    "dobMonth":"01",
+    "dobYear":"1901",
+    "ssn":"0000",
+    "email":"karthik.sundaram+6@concertidc.com",
+    "addressLine1":"addressline 1",
+    "addressLine2":"addresslin 2",
+    "city":"sample city",
+    "state":"ALABAMA",
+    "postalCode":"12345",
+    "phoneNumber":"7502042232",
+    "url":"http://google.com",
+    "ip":"111.111.111.111"
+}
+
+### FIDO SECURITY PAYMENT CONNECTED ACCOUNT UPDATE
+# @name fidoSecurityPaymentUpdateConnectedAccount
+PUT {{baseUrl}}/{{env}}/connected-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "businessType":"individual",
+    "firstName":"Karthik6",
+    "lastName":"Sundaram6",
+    "dobDay":"01",
+    "dobMonth":"01",
+    "dobYear":"1901",
+    "ssn":"0000",
+    "email":"karthik.sundaram+6@concertidc.com",
+    "addressLine1":"addressline 1",
+    "addressLine2":"addresslin 2",
+    "city":"sample city",
+    "state":"ALABAMA",
+    "postalCode":"12345",
+    "phoneNumber":"7502042232",
+    "url":"http://google.com",
+    "ip":"111.111.111.111"
+}
+
+### FIDO SECURITY PAYMENT CONNECTED ACCOUNT BALANCE
+# @name fidoSecurityPaymentConnectedAccountBalance
+GET {{baseUrl}}/{{env}}/connected-accounts HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+
+### FIDO SECURITY PAYMENT CONNECTED ACCOUNT UPDATE
+# @name fidoSecurityPaymentGuardPayment
+PUT {{baseUrl}}/{{env}}/guard-payout HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "interval":"weekly",
+    "weekly_anchor":"monday"
+}
+
+### FIDO SECURITY PAYMENT CONNECTED ACCOUNT MANUAL PAYOUT
+# @name fidoSecurityPaymentManualPayment
+POST {{baseUrl}}/{{env}}/guard-payout HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "amount":"5",
+    "description":"Test payment by developers"
+}
+
+### FIDO SECURITY JOB SUMMARY
+# @name fidoSecurityJobSummary
+GET {{baseUrl}}/{{env}}/job?jobId=a0235973-28df-40aa-b905-6186b61ed61f HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+### FIDO SECURITY JOB PAY
+# @name fidoSecurityJobPay
+PATCH {{baseUrl}}/{{env}}/job?jobId=a0235973-28df-40aa-b905-6186b61ed61f HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "jobId":"a0235973-28df-40aa-b905-6186b61ed61f"
+}
+
+### FIDO SECURITY TRANSACTIONS
+# @name fidoSecurityTransactions
+GET {{baseUrl}}/{{env}}/transaction?page=1&&pageSize=10 HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+### FIDO SECURITY DisburseJobAmt
+# @name fidoSecurityDisburseJobAmt
+POST {{baseUrl}}/{{env}}/disburse-job-amount HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+### FIDO SECURITY Chat
+# @name fidoSecurityChat
+GET {{baseUrl}}/{{env}}/chat HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+### FIDO SECURITY ChatMessages
+# @name fidoSecurityChatMessages
+GET {{baseUrl}}/{{env}}/chat?chatId=f47ac10b-58cc-4372-a567-0e02b2c3d479 HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+### FIDO SECURITY CreateChat
+# @name fidoSecurityCreateChat
+POST {{baseUrl}}/{{env}}/chat HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "chatType": "single",
+    "userId": "03590275-95fe-4ab7-bcb7-d42b860548aa",
+    "jobId": "a0235973-28df-40aa-b905-6186b61ed61f"
+}
+
+### FIDO SECURITY CreateChat
+# @name fidoSecurityCreateChat
+POST {{baseUrl}}/{{env}}/chat HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "chatType": "group",
+    "jobId": "3c5158a6-67ff-48ac-8644-6e31ea3b6953"
+}
+
+### FIDO SECURITY ReadMessages
+# @name fidoSecurityReadMessages
+PUT {{baseUrl}}/{{env}}/chat HTTP/1.1
+Content-Type: application/json
+Authorization: {{cognitoToken}}
+
+{
+    "chatId": "a7b7306a-1dd9-4322-870d-c6e9737adcd4"
+}

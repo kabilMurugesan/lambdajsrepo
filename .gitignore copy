@@ -1,0 +1,12 @@
+.aws-sam/
+__azurite_db_queue__.json
+__azurite_db_queue_extent__.json
+package-lock.json
+chat-lambda/package-lock.json
+chat-lambda/node_modules/
+lambda-layer/node-utils/node_modules/
+lambda-layer/node-utils/package-lock.json
+cdk.out/
+node_modules/
+lambda-layer/node-utils/template.yaml
+template.yaml

@@ -1,0 +1,50 @@
+{
+  "app": "npx ts-node --prefer-ts-exts bin/FidoSecurityLambdaCdk.ts",
+  "watch": {
+    "include": ["**"],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "**/*.d.ts",
+      "**/*.js",
+      "tsconfig.json",
+      "package*.json",
+      "yarn.lock",
+      "node_modules",
+      "test"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:lowercaseDbIdentifier": true,
+    "@aws-cdk/aws-lambda:recognizeVersionProps": true,
+    "@aws-cdk/aws-cloudfront:defaultSecurityPolicyTLSv1.2_2021": true,
+    "@aws-cdk-containers/ecs-service-extensions:enableDefaultLogDriver": true,
+    "@aws-cdk/aws-ec2:uniqueImdsv2TemplateName": true,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/core:target-partitions": ["aws", "aws-cn"],
+    "globals": {
+      "appName": "ts-lambda",
+      "region": "us-west-1",
+      "environment": "develop",
+      "branchName": "FIDO-30"
+    },
+    "environments": [
+      {
+        "environment": "develop",
+        "branchName": "FIDO-30",
+        "accountNumber": "710198852569",
+        "db_host": "db4free.net",
+        "db_port": 3306,
+        "db_username": "db_username_new",
+        "db_password": "db_password",
+        "db_name": "db_database_new",
+        "apiBaseUrl": "http://localhost",
+        "homePageUrl": "",
+        "stageName": "develop",
+        "id": "111"
+      }
+    ]
+  }
+}
