@@ -12,13 +12,13 @@ export const GlobalConstants = {
     USERNAME: '6503e84ee9d215abb190d4b7',
     PASSWORD: 'iDkZP1gZmcoRKQi2WvoPvrM7',
   },
-  ONESIGNAL_PUSH: {
-    userAuthKey:
-      process.env.ONESIGNAL_API_KEY ||
-      'YjI2N2I1NzItMTcwMS00NGFiLWI2ZDMtOWIwYjRjNTJmMDlj',
-    appId:
-      process.env.ONESIGNAL_APP_ID || 'f44a6a74-5195-448b-b71c-949f1968f106',
-  },
+  // ONESIGNAL_PUSH: {
+  //   userAuthKey:
+  //     process.env.ONESIGNAL_API_KEY ||
+  //     'YjI2N2I1NzItMTcwMS00NGFiLWI2ZDMtOWIwYjRjNTJmMDlj',
+  //   appId:
+  //     process.env.ONESIGNAL_APP_ID || 'f44a6a74-5195-448b-b71c-949f1968f106',
+  // },
   DEFAULT_CRIME_INDEX_FEE: 10,
   ADMIN_USER_ID: 'af9c44a1-4d45-4c4e-8b7b-786584c2f998',
 };
